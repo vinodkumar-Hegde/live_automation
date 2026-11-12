@@ -1,0 +1,13 @@
+{
+  "name": "doctutorials-office-recorder",
+  "version": "0.1.0",
+  "description": "DocTutorials office desktop recorder: joins each live webinar as a participant and records it.",
+  "main": "main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "45.3.1"
+  }
+}

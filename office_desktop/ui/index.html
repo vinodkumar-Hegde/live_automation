@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>DocTutorials Office Recorder</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'">
+<style>
+:root{--bg:#f2f6fc;--card:#fff;--line:#dbe5f1;--ink:#152747;--muted:#60758e;--brand:#285da9;--bad:#b42318;--ok:#16794c}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1826;--card:#18243a;--line:#2b3b57;--ink:#e6edf8;--muted:#9bb0cb;--brand:#6ea3ee;--bad:#ff8a7d;--ok:#5ed39b}}
+body{font:15px -apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink);margin:0;padding:22px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px}
+h1{font-size:20px;margin:0 0 6px}h2{font-size:15px;margin:0 0 10px}p{margin:6px 0}small,.muted{color:var(--muted)}
+#state{font-weight:700;color:var(--brand)}#state.bad{color:var(--bad)}
+label{display:block;margin:12px 0 5px;font-weight:600;font-size:13px}
+input{box-sizing:border-box;width:100%;padding:9px 10px;font:inherit;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.row{display:flex;gap:10px}.row>div{flex:1}
+button{background:var(--brand);color:#fff;padding:9px 16px;border:0;border-radius:8px;font:inherit;font-weight:600;cursor:pointer;margin-top:14px}
+button.plain{background:none;color:var(--brand);padding:0;margin:0;font-weight:600}button:disabled{opacity:.5}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:7px 6px;border-top:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600;border-top:0;font-size:12px}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}.rec{color:var(--bad);font-weight:700}.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad)}
+#error{color:var(--bad);min-height:1.2em}td.path{overflow-wrap:anywhere}
+</style></head><body>
+<section><h1>DocTutorials Office Recorder</h1><p id="state">Starting…</p><p id="message"></p>
+<small>Keep this app open. When faculty press Start recording, a window opens here, joins the live class as a viewer and records it. Leave those windows open and unminimised while they record.</small></section>
+<section><h2>Recording now</h2><table><thead><tr><th>Class</th><th>Status</th><th>Recorded</th><th>Size</th></tr></thead><tbody id="live"></tbody></table><p id="idle" class="muted">No class is being recorded.</p></section>
+<section><h2>Recently saved</h2><table><tbody id="finished"></tbody></table><p id="none" class="muted">Nothing saved since this app was opened.</p><button class="plain" id="folder">Open recordings folder</button></section>
+<section><h2>Connection and settings</h2><form id="pair">
+<label for="server">DocTutorials application address</label><input id="server" placeholder="http://192.168.1.20:8792 or https://your-app.example.com" required>
+<label for="token">Office pairing code</label><input id="token" type="password" autocomplete="off" placeholder="From the admin dashboard: Generate office pairing code">
+<label for="outputDir">Save recordings in</label><input id="outputDir" placeholder="Leave blank for Movies/DocTutorials">
+<div class="row"><div><label for="capacity">Classes at once</label><input id="capacity" type="number" min="1" max="8" value="3"></div>
+<div><label for="width">Video width</label><input id="width" type="number" min="640" max="3840" step="2" value="1280"></div>
+<div><label for="height">Video height</label><input id="height" type="number" min="360" max="2160" step="2" value="720"></div></div>
+<button id="save">Connect</button><p id="error" role="alert"></p></form></section>
+<script src="ui.js"></script></body></html>
